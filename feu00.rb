@@ -14,23 +14,31 @@ o
 Gérer les problèmes potentiels d’arguments.
 =end
 
+if ARGV.length != 2 || !ARGV.all?{|args| args.match?(/\A\d+\z/)}
+    puts "error"
+    exit
+end
+
+def make_rectangle (column, lines)
+    if column == 1 && lines == 1
+        puts "o"
+    elsif column != 1 && lines == 1
+        puts "o" + ("-")*(column-2) + "o" 
+    elsif column != 1 && lines != 1
+        puts "o" + ("-")*(column-2) + "o" 
+    
+        (lines-2).times do                      # .times => exécute le bloc de code n fois => n times
+            puts "|" + (" ")*(column-2) + "|"
+        end
+
+        puts "o" + ("-")*(column-2) + "o" 
+    end
+    return 
+end
 
 column = ARGV[0].to_i
 lines = ARGV[1].to_i
 
-if column == 1 && lines == 1
-    puts "o"
-elsif column != 1 && lines == 1
-    puts "o" + ("-")*(column-2) + "o" 
-elsif column != 1 && lines != 1
-    puts "o" + ("-")*(column-2) + "o" 
-  
-    (lines-2).times do                      # .times => exécute le bloc de code n fois => n times
-        puts "|" + (" ")*(column-2) + "|"
-    end
-
-    puts "o" + ("-")*(column-2) + "o" 
-end
-
-
+result = make_rectangle(column,lines)
+print result
 
