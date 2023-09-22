@@ -11,3 +11,7 @@ $> ruby exo.rb “4 + 21 * (1 - 2 / 2) + 38”
 Vous pouvez partir du principe que la chaîne de caractères donnée en argument sera valide.
 =end
 
+if ARGV.length < 3
+    puts "error"
+    exit
+end
