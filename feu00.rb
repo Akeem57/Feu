@@ -15,3 +15,22 @@ Gérer les problèmes potentiels d’arguments.
 =end
 
 
+column = ARGV[0].to_i
+lines = ARGV[1].to_i
+
+if column == 1 && lines == 1
+    puts "o"
+elsif column != 1 && lines == 1
+    puts "o" + ("-")*(column-2) + "o" 
+elsif column != 1 && lines != 1
+    puts "o" + ("-")*(column-2) + "o" 
+  
+    (lines-2).times do                      # .times => exécute le bloc de code n fois => n times
+        puts "|" + (" ")*(column-2) + "|"
+    end
+
+    puts "o" + ("-")*(column-2) + "o" 
+end
+
+
+
