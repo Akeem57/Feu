@@ -11,7 +11,13 @@ $> ruby exo.rb “4 + 21 * (1 - 2 / 2) + 38”
 Vous pouvez partir du principe que la chaîne de caractères donnée en argument sera valide.
 =end
 
-if ARGV.length < 3
-    puts "error"
-    exit
+
+def script_from_shell(argument)
+    exe = eval(argument)  #eval récupère une chaîne de caractère en argument et l'exécute tel quel, comme du code ruby!
+    return exe
 end
+
+argument = ARGV[0]
+
+result = script_from_shell(argument)
+puts result
