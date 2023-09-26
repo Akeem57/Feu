@@ -70,8 +70,10 @@ y=0
 while i < board.length
     if board[i][j] == target[k][l] && board[i][j+1] == target[k][l+1] && ((board[i+1][j] == target[k+1][l]) || (board[i+1][j+1] == target[k+1][l]))
         result << board[i][j]
+        puts "Trouvé!"
         x= j
         y= i
+        puts "Coordonnées : #{x}, #{y}"
     else
         result << "-"
     end
@@ -89,6 +91,6 @@ end
 
 puts result.join("")
 
-puts "Coordonnées : #{x}, #{y}"
+
 
 
