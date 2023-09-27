@@ -64,5 +64,5 @@ target.each do |lign|
     target_final << lign_transform
 end
   
-result = []
+
 
