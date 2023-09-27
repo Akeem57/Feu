@@ -45,4 +45,4 @@ end
 
 
 
-puts doc
+print doc
