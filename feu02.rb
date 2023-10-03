@@ -27,7 +27,7 @@ Vous devez gérer les potentiels problèmes d’arguments et de lecture de ﬁch
 
 
 board = File.open(ARGV[0], "r").read.split(/\n/) # = ["0000", "1111", "2331"]
-target = File.open(ARGV[1], "r").read.split(/\n/) # = ["11", "1"]
+target = File.open(ARGV[1], "r").read.split(/\n/) # = ["11", " 1"]
 =begin
 matches = board.grep(/#{target}/)
 
@@ -62,7 +62,7 @@ end
 target_final = [] 
 largeur_target = []
 
-target.each do |lign|        # => resultat : [[["1"], ["1"]], [["1"]]]
+target.each do |lign|        # => resultat : [[["1"], ["1"]], [[""],["1"]]]
     lign_transform = []
     lign.each_char do |char|
         lign_transform << [char]
@@ -73,36 +73,48 @@ end
   
 longueur_target = target_final.length
 
+
 i=0
 a=0
 b=0
 c=0
 d=0
 final_array = []
-while i < (largeur_board - largeur_target)
-    if board_final[a][b] != target_final[c][d]
-        final_array << "-"
-        b+=1
-        if (b == (largeur_board - largeur_target)) && (board_final[a][b] != target_final[c][d]) && (i == (longueur_board - longueur_target))
-            final_array << "-"
-            break
-        elsif b == (largeur_board - largeur_target) && (board_final[a][b] != target_final[c][d])
-            final_array << "-" * (largeur_board - largeur_target)
-            i+=1
-        else
-            final_array << board_final[a][b]
-        end
+while i < (largeur_board - largeur_target)+1
+    if (b == (largeur_board-largeur_target)) && (board_final[a][b] != target_final[c][d]) 
+        final_array << "-" * largeur_target
+        a+=1
+        i=0
+        b=0
+    elsif board_final[a][b] != target_final[c][d]
+            final_array<< "-"
+            b+=1
+    elsif board_final[a][b] == target[c][d]
+        
     end
+    i+=1
 end
     
     
-
-print "longueur board : #{longueur_board}"
+print "board_final : #{board_final}"
+puts
+print "target_final : #{target_final}"
+puts
+print "Hauteur board : #{longueur_board}"
 puts
 print "largeur board : #{largeur_board}"
 puts
-print "longueur target : #{longueur_target}"
+print "Hauteur target : #{longueur_target}"
 puts
 print "largeur target : #{largeur_target}"
 puts
 puts "i : #{i}"
+puts "final_array : #{final_array.join("")}"
+board_final_string = board_final.join("")
+p board_final_string
+(largeur_board-largeur_target).times do
+    target_final[0].push([" "])
+end
+target_final_string = target_final.join("")
+p target_final_string
+result = ''
